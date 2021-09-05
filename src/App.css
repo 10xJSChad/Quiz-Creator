@@ -1,38 +1,39 @@
-.App {
+body{
+  background-color: turquoise;
+}
+
+.question-box{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.question-button{
+  padding: 10px;
+  background-color: white;
+  transition: 0.45s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.question-button-right{
+  padding: 10px;
+  background-color: white;
+  transition: 0.45s;
+  animation: turnGreen 2s;
+  animation-fill-mode: forwards;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.question-button-wrong{
+  padding: 10px;
+  background-color: white;
+  transition: 0.45s;
+  animation: turnRed 2s;
+  animation-fill-mode: forwards;
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes turnGreen {
+  0% {background-color: white;}
+  100% {background-color: greenyellow;}
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes turnRed {
+  0% {background-color: white;}
+  100% {background-color: red;}
 }

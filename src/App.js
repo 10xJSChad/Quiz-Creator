@@ -33,29 +33,48 @@ class QuizCreator extends React.Component{
     this.state = {
       questions: [],
       question: ["Question", 1, "Answer A", "Answer B", "Answer C", "Answer D"],
+      correct: 0,
     }
     this.onChange = this.onChange.bind(this);
     this.inputTest = this.inputTest.bind(this);
+    this.setAnswer = this.setAnswer.bind(this);
   }
 
   onChange(value, index){
     let question = this.state.question;
     question[index] = value;
     this.setState({
-         question: question
+         question: question,
     });
   }
 
+  setAnswer(index){
+    this.setState({
+         correct: index,
+    });
+    this.render();
+  }
+
   AnswerButton(answer, val){
+    var style = {}
+    if(val == this.state.correct)
+      style = {backgroundColor: "greenyellow"}
+
     return(
-      <button className="question-button">{this.state.question[val+1]}</button>
+      <button 
+      className="question-button"
+      style={style}
+      onClick={e => this.setAnswer(val)}
+      >
+        {this.state.question[val+1]}
+        </button>
     )
   }
 
   inputTest(index){
     return(
       <input
-      className
+      className="question-create-input"
       type="text"
       value={this.state.question[index]}
       onChange={e => this.onChange(e.target.value, index)}
@@ -68,20 +87,25 @@ class QuizCreator extends React.Component{
     return(
       <>
       <div className="question-box">
+      <h1>Create a question</h1>
+        {this.inputTest(0)} <br/>
+        {this.inputTest(2)}
+        {this.inputTest(3)}
+        {this.inputTest(4)}
+        {this.inputTest(5)}
+      </div>
+
+
+      <div className="question-box">
+      <h1>Question Preview</h1>
         <p className="question-text">{this.state.question[0]}</p>
         {this.AnswerButton(this.state.question[2], 1)}
         {this.AnswerButton(this.state.question[3], 2)}
         {this.AnswerButton(this.state.question[4], 3)}
         {this.AnswerButton(this.state.question[5], 4)}
-      </div>
-      
-      <div>
-        <h1>{this.state.question}</h1>
-        {this.inputTest(0)}
-        {this.inputTest(2)}
-        {this.inputTest(3)}
-        {this.inputTest(4)}
-        {this.inputTest(5)}
+        <br/>
+        <button>Add question</button>
+        <p>Click on an answer to mark it as correct</p>
       </div>
       </>
     )

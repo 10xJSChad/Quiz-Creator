@@ -21,7 +21,7 @@ class App extends React.Component{
     if(this.state.screen == 2) return(<QuizImport/>)
 
     return(
-        <div className="main-screen">
+        <div className="question-box">
           <p>Welcome to quiz game</p>
           <button onClick={() => this.changeScreen(1)}>Create a quiz</button>
           <button onClick={() => this.changeScreen(2)}>Import a quiz</button>
@@ -36,11 +36,13 @@ class QuizCreator extends React.Component{
     this.state = {
       questions: [],
       question: ["Question", 1, "Answer A", "Answer B", "Answer C", "Answer D"],
+      start: false,
     }
     this.onChange = this.onChange.bind(this);
     this.InputBox = this.InputBox.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
     this.setAnswer = this.setAnswer.bind(this);
+    this.startQuiz = this.startQuiz.bind(this)
   }
 
   onChange(value, index){
@@ -109,7 +111,16 @@ class QuizCreator extends React.Component{
     return code;
   }
 
+  startQuiz(){
+    this.setState({
+      start: true,
+    })
+  }
+
   render(){
+    if(this.state.start)
+      return(<QuizImport code={this.createCode()} start={true}/>)
+
     return(
       <>
       <div className="question-box">
@@ -138,6 +149,7 @@ class QuizCreator extends React.Component{
         <h1>Quiz code</h1>
         <textarea value={this.createCode()}/>
         <p>Copy and import this quiz code to play your quiz</p>
+        <button onClick={this.startQuiz}>Import and start</button>
       </div>
       </>
     )
@@ -151,7 +163,13 @@ class QuizImport extends React.Component{
       code: "",
       start: false,
     }
+
     this.startQuiz = this.startQuiz.bind(this)
+    
+    if(this.props.start){
+      this.state.code = this.props.code;
+      this.state.start = true;
+    }
   }
 
   onChange(event){
@@ -235,7 +253,7 @@ class Quiz extends React.Component {
   render(){
     if(this.state.current == this.state.questions.length){
       return(
-        <div className="end-screen">
+        <div className="question-box">
           <h1>The end</h1>
           <h1>You scored {this.state.correct} out of {this.state.questions.length}</h1>
         </div>

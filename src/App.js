@@ -16,12 +16,15 @@ class App extends React.Component{
   }
 
   render(){
+    //TODO: Convert to switch
     if(this.state.screen == 1) return(<QuizCreator/>)
+    if(this.state.screen == 2) return(<QuizImport/>)
+
     return(
         <div className="main-screen">
           <p>Welcome to quiz game</p>
           <button onClick={() => this.changeScreen(1)}>Create a quiz</button>
-          <button>Import a quiz</button>
+          <button onClick={() => this.changeScreen(2)}>Import a quiz</button>
         </div>
     )
   }
@@ -98,9 +101,9 @@ class QuizCreator extends React.Component{
     let code = "";
 
     questions.forEach(question => {
-      code += "|";
+      code += "⎙";
       question.forEach((element) => {
-        code += element + ","
+        code += element + "⎚"
       })
     });
     return code;
@@ -142,7 +145,65 @@ class QuizCreator extends React.Component{
 }
 
 class QuizImport extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      code: "",
+      start: false,
+    }
+    this.startQuiz = this.startQuiz.bind(this)
+  }
 
+  onChange(event){
+    this.setState({
+      code: event,
+    })
+  }
+  
+  parseImport(){
+    let code = this.state.code;
+    let quiz = [];
+    let current = [];
+    let questions = code.split("⎙");
+
+    questions.forEach(question => {
+      let questionSplit = question.split("⎚");
+      questionSplit.forEach(element => {
+        if(element != "")
+          current.push(element)
+      });
+
+      if(current != "")
+        quiz.push(current);
+      current = [];
+    });
+    return(quiz)
+  }
+  
+  startQuiz(){
+    this.setState({
+      start: true,
+    })
+  }
+  
+  render(){
+    if(this.state.start)
+      return(<Quiz quiz={this.parseImport()}/>)
+
+    return(
+      <div className="question-box">
+        <h1>Enter a quiz code</h1>
+        
+        <textarea
+              value={this.state.code}
+              onChange={e => this.onChange(e.target.value)}
+        />
+        
+        <br/>
+        <button onClick={this.startQuiz}>Import and start</button>
+      </div>
+    )
+  }
 }
 
 class Quiz extends React.Component {
@@ -154,7 +215,8 @@ class Quiz extends React.Component {
       correct: 0,
     }
 
-    this.checkAndIncrement = this.checkAndIncrement.bind(this)
+    this.state.questions = this.props.quiz;
+    this.checkAndIncrement = this.checkAndIncrement.bind(this);
   }
 
   checkAndIncrement(answer){

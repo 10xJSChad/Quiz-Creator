@@ -33,10 +33,10 @@ class QuizCreator extends React.Component{
     this.state = {
       questions: [],
       question: ["Question", 1, "Answer A", "Answer B", "Answer C", "Answer D"],
-      correct: 0,
     }
     this.onChange = this.onChange.bind(this);
-    this.inputTest = this.inputTest.bind(this);
+    this.InputBox = this.InputBox.bind(this);
+    this.addQuestion = this.addQuestion.bind(this);
     this.setAnswer = this.setAnswer.bind(this);
   }
 
@@ -49,15 +49,17 @@ class QuizCreator extends React.Component{
   }
 
   setAnswer(index){
+    let question = this.state.question;
+    question[1] = index;
     this.setState({
-         correct: index,
+      question: question,
     });
     this.render();
   }
 
   AnswerButton(answer, val){
     var style = {}
-    if(val == this.state.correct)
+    if(val == this.state.question[1])
       style = {backgroundColor: "greenyellow"}
 
     return(
@@ -71,7 +73,7 @@ class QuizCreator extends React.Component{
     )
   }
 
-  inputTest(index){
+  InputBox(index){
     return(
       <input
       className="question-create-input"
@@ -82,17 +84,38 @@ class QuizCreator extends React.Component{
     )
   }
 
-  
+  addQuestion(){
+    let questions = this.state.questions;
+    questions.push(this.state.question)
+    this.setState({
+      questions: questions,
+      question: ["Question", 1, "Answer A", "Answer B", "Answer C", "Answer D"],
+    })
+  }
+
+  createCode(){
+    let questions = this.state.questions;
+    let code = "";
+
+    questions.forEach(question => {
+      code += "|";
+      question.forEach((element) => {
+        code += element + ","
+      })
+    });
+    return code;
+  }
+
   render(){
     return(
       <>
       <div className="question-box">
       <h1>Create a question</h1>
-        {this.inputTest(0)} <br/>
-        {this.inputTest(2)}
-        {this.inputTest(3)}
-        {this.inputTest(4)}
-        {this.inputTest(5)}
+        {this.InputBox(0)} <br/>
+        {this.InputBox(2)}
+        {this.InputBox(3)}
+        {this.InputBox(4)}
+        {this.InputBox(5)}
       </div>
 
 
@@ -104,12 +127,22 @@ class QuizCreator extends React.Component{
         {this.AnswerButton(this.state.question[4], 3)}
         {this.AnswerButton(this.state.question[5], 4)}
         <br/>
-        <button>Add question</button>
+        <button onClick={this.addQuestion}>Add question</button>
         <p>Click on an answer to mark it as correct</p>
+      </div>
+
+      <div className="question-box">
+        <h1>Quiz code</h1>
+        <textarea value={this.createCode()}/>
+        <p>Copy and import this quiz code to play your quiz</p>
       </div>
       </>
     )
   }
+}
+
+class QuizImport extends React.Component{
+
 }
 
 class Quiz extends React.Component {

@@ -1,15 +1,52 @@
 body{
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,142,255,1) 100%); 
+}
+
+.selection-button{
+  width: 25%;
+  height: 20%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  transition: 0.65s;
+}
+
+button:hover{
   background-color: turquoise;
+}
+
+p{
+  font-family: 'Roboto', sans-serif;
+}
+
+.title-text{
+  font-size: 40px;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.background-box{
+  width: 50%;
+  background-color: whitesmoke;
+  margin: 0 auto;
+  border-radius: 25px;
+  padding-bottom: 40px;
 }
 
 .question-box{
   text-align: center;
 }
 
+.question-button-box{
+  margin: 0 auto;
+  width: 40%
+}
+
 .question-button{
   padding: 10px;
   background-color: white;
   transition: 0.45s;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
 }
 
 .question-button-right{
@@ -18,6 +55,8 @@ body{
   transition: 0.45s;
   animation: turnGreen 2s;
   animation-fill-mode: forwards;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
 }
 
 .question-button-wrong{
@@ -26,6 +65,8 @@ body{
   transition: 0.45s;
   animation: turnRed 2s;
   animation-fill-mode: forwards;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
 }
 
 @keyframes turnGreen {

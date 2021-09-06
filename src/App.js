@@ -21,11 +21,13 @@ class App extends React.Component{
     if(this.state.screen == 2) return(<QuizImport/>)
 
     return(
+      <div class="background-box">
         <div className="question-box">
-          <p>Welcome to quiz game</p>
-          <button onClick={() => this.changeScreen(1)}>Create a quiz</button>
-          <button onClick={() => this.changeScreen(2)}>Import a quiz</button>
+          <p className="title-text">React Quiz by 10xJSChad</p>
+          <button className="selection-button" onClick={() => this.changeScreen(1)}>Create a quiz</button>
+          <button className="selection-button" onClick={() => this.changeScreen(2)}>Import a quiz</button>
         </div>
+      </div>
     )
   }
 }
@@ -123,33 +125,37 @@ class QuizCreator extends React.Component{
 
     return(
       <>
-      <div className="question-box">
-      <h1>Create a question</h1>
-        {this.InputBox(0)} <br/>
-        {this.InputBox(2)}
-        {this.InputBox(3)}
-        {this.InputBox(4)}
-        {this.InputBox(5)}
-      </div>
+      <div className="background-box">
+        <div className="question-box">
+        <h1>Create a question</h1>
+          {this.InputBox(0)} <br/>
+          {this.InputBox(2)}
+          {this.InputBox(3)}
+          {this.InputBox(4)}
+          {this.InputBox(5)}
+        </div>
 
 
-      <div className="question-box">
-      <h1>Question Preview</h1>
-        <p className="question-text">{this.state.question[0]}</p>
-        {this.AnswerButton(this.state.question[2], 1)}
-        {this.AnswerButton(this.state.question[3], 2)}
-        {this.AnswerButton(this.state.question[4], 3)}
-        {this.AnswerButton(this.state.question[5], 4)}
-        <br/>
-        <button onClick={this.addQuestion}>Add question</button>
-        <p>Click on an answer to mark it as correct</p>
-      </div>
+        <div className="question-box">
+        <h1>Question Preview</h1>
+          <p className="question-text">{this.state.question[0]}</p>
+          <div className="question-button-box">
+            {this.AnswerButton(this.state.question[2], 1)}
+            {this.AnswerButton(this.state.question[3], 2)}
+            {this.AnswerButton(this.state.question[4], 3)}
+            {this.AnswerButton(this.state.question[5], 4)}
+          </div>
+          <br/>
+          <button onClick={this.addQuestion}>Add question</button>
+          <p>Click on an answer to mark it as correct</p>
+        </div>
 
-      <div className="question-box">
-        <h1>Quiz code</h1>
-        <textarea value={this.createCode()}/>
-        <p>Copy and import this quiz code to play your quiz</p>
-        <button onClick={this.startQuiz}>Import and start</button>
+        <div className="question-box">
+          <h1>Quiz code</h1>
+          <textarea value={this.createCode()}/>
+          <p>Copy and import this quiz code to play your quiz</p>
+          <button onClick={this.startQuiz}>Import and start</button>
+        </div>
       </div>
       </>
     )

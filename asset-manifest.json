@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Quiz-Creator/static/css/main.037a241e.chunk.css",
-    "main.js": "/Quiz-Creator/static/js/main.2b36a829.chunk.js",
-    "main.js.map": "/Quiz-Creator/static/js/main.2b36a829.chunk.js.map",
+    "main.css": "/Quiz-Creator/static/css/main.beed3cdb.chunk.css",
+    "main.js": "/Quiz-Creator/static/js/main.4b19c4c0.chunk.js",
+    "main.js.map": "/Quiz-Creator/static/js/main.4b19c4c0.chunk.js.map",
     "runtime-main.js": "/Quiz-Creator/static/js/runtime-main.b27d1ed9.js",
     "runtime-main.js.map": "/Quiz-Creator/static/js/runtime-main.b27d1ed9.js.map",
     "static/js/2.bdce4de2.chunk.js": "/Quiz-Creator/static/js/2.bdce4de2.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.e7842398.chunk.js": "/Quiz-Creator/static/js/3.e7842398.chunk.js",
     "static/js/3.e7842398.chunk.js.map": "/Quiz-Creator/static/js/3.e7842398.chunk.js.map",
     "index.html": "/Quiz-Creator/index.html",
-    "static/css/main.037a241e.chunk.css.map": "/Quiz-Creator/static/css/main.037a241e.chunk.css.map",
+    "static/css/main.beed3cdb.chunk.css.map": "/Quiz-Creator/static/css/main.beed3cdb.chunk.css.map",
     "static/js/2.bdce4de2.chunk.js.LICENSE.txt": "/Quiz-Creator/static/js/2.bdce4de2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b27d1ed9.js",
     "static/js/2.bdce4de2.chunk.js",
-    "static/css/main.037a241e.chunk.css",
-    "static/js/main.2b36a829.chunk.js"
+    "static/css/main.beed3cdb.chunk.css",
+    "static/js/main.4b19c4c0.chunk.js"
   ]
 }

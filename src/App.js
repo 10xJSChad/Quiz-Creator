@@ -13,6 +13,8 @@ class App extends React.Component{
     this.setState({
       screen: screen,
     })
+    if(this.props.screen)
+      this.state.screen = this.props.screen;
   }
 
   render(){
@@ -21,7 +23,7 @@ class App extends React.Component{
     if(this.state.screen == 2) return(<QuizImport/>)
 
     return(
-      <div class="background-box">
+      <div className="background-box">
         <div className="question-box">
           <p className="title-text">React Quiz by 10xJSChad</p>
           <button className="selection-button" onClick={() => this.changeScreen(1)}>Create a quiz</button>
@@ -240,10 +242,12 @@ class Quiz extends React.Component {
       current: 0,
       questions: [["What color is red", 1, "Red", "Blue", "Left", "Right"], ["What color is blue", 2, "Red", "Blue", "Left", "Right"]],
       correct: 0,
+      goToIndex: 0,
     }
 
     this.state.questions = this.props.quiz;
     this.checkAndIncrement = this.checkAndIncrement.bind(this);
+    this.returnToIndex = this.returnToIndex.bind(this)
   }
 
   checkAndIncrement(answer){
@@ -258,14 +262,23 @@ class Quiz extends React.Component {
     })
   }
 
+  returnToIndex(){
+    this.setState({
+      goToIndex: 1,
+    })
+  }
 
   render(){
+    if(this.state.goToIndex != 0)
+      return(<App screen={0}/>)
+      
     if(this.state.current == this.state.questions.length){
       return(
         <div className="background-box">
           <div className="question-box">
             <h1>The end</h1>
             <h1>You scored {this.state.correct} out of {this.state.questions.length}</h1>
+            <button className="selection-button" onClick={this.returnToIndex}>Back</button>
           </div>
         </div>
       )

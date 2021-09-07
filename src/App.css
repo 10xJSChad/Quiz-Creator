@@ -10,6 +10,7 @@ body{
   font-family: 'Roboto', sans-serif;
   font-size: 25px;
   transition: 0.65s;
+  background-color: white;
 }
 
 button:hover{
@@ -102,7 +103,7 @@ h1{
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     transition: 0.65s;
-    background-color: whitesmoke;
+    background-color: white;
   }
   
   button:hover{

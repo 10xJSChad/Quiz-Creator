@@ -1,3 +1,4 @@
+@media only screen and (min-width: 1024px) {
 body{
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,142,255,1) 100%); 
@@ -86,4 +87,98 @@ h1{
 @keyframes turnRed {
   0% {background-color: white;}
   100% {background-color: red;}
+}
+}
+
+@media only screen and (max-width: 1024px) {
+  body{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,142,255,1) 100%); 
+  }
+  
+  .selection-button{
+    width: 30%;
+    height: 20%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    transition: 0.65s;
+    background-color: whitesmoke;
+  }
+  
+  button:hover{
+    background-color: turquoise;
+  }
+  
+  p{
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  h1{
+    font-family: 'Patrick Hand', cursive;
+  }
+  
+  .under-text{
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .title-text{
+    font-size: 40px;
+    font-family: 'Patrick Hand', cursive;
+  }
+  
+  .background-box{
+    width: 90%;
+    background-color: whitesmoke;
+    margin: 0 auto;
+    border-radius: 25px;
+    padding-bottom: 40px;
+  }
+  
+  .question-box{
+    text-align: center;
+  }
+  
+  .question-button-box{
+    margin: 0 auto;
+    width: 40%
+  }
+  
+  .question-button{
+    padding: 5px;
+    background-color: white;
+    transition: 0.45s;
+    font-family: 'Roboto', sans-serif;
+    font-size: 23px;
+  }
+  
+  .question-button-right{
+    padding: 5px;
+    background-color: white;
+    transition: 0.45s;
+    animation: turnGreen 2s;
+    animation-fill-mode: forwards;
+    font-family: 'Roboto', sans-serif;
+    font-size: 23px;
+  }
+  
+  .question-button-wrong{
+    padding: 5px;
+    background-color: white;
+    transition: 0.45s;
+    animation: turnRed 2s;
+    animation-fill-mode: forwards;
+    font-family: 'Roboto', sans-serif;
+    font-size: 23px;
+  }
+  
+  @keyframes turnGreen {
+    0% {background-color: white;}
+    100% {background-color: greenyellow;}
+  }
+  
+  @keyframes turnRed {
+    0% {background-color: white;}
+    100% {background-color: red;}
+  }
 }

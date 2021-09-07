@@ -128,7 +128,7 @@ class QuizCreator extends React.Component{
       <>
       <div className="background-box">
         <div className="question-box">
-        <h1>Create a question</h1>
+        <h1>Quiz Creator</h1>
           {this.InputBox(0)} <br/>
           {this.InputBox(2)}
           {this.InputBox(3)}

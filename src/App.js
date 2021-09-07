@@ -87,6 +87,7 @@ class QuizCreator extends React.Component{
       type="text"
       value={this.state.question[index]}
       onChange={e => this.onChange(e.target.value, index)}
+      style={{fontSize: 15}}
     />
     )
   }
@@ -137,24 +138,23 @@ class QuizCreator extends React.Component{
 
 
         <div className="question-box">
-        <h1>Question Preview</h1>
-          <p className="question-text">{this.state.question[0]}</p>
+          <p className="under-text">{this.state.question[0]}</p>
           <div className="question-button-box">
             {this.AnswerButton(this.state.question[2], 1)}
             {this.AnswerButton(this.state.question[3], 2)}
             {this.AnswerButton(this.state.question[4], 3)}
             {this.AnswerButton(this.state.question[5], 4)}
           </div>
+          <p className="under-text" style={{fontSize: 20}}>Click on an answer to mark it as correct</p>
+          <button className="selection-button" style={{fontSize: 20}} onClick={this.addQuestion}>Add question</button>
           <br/>
-          <button onClick={this.addQuestion}>Add question</button>
-          <p>Click on an answer to mark it as correct</p>
         </div>
 
         <div className="question-box">
           <h1>Quiz code</h1>
           <textarea value={this.createCode()}/>
-          <p>Copy and import this quiz code to play your quiz</p>
-          <button onClick={this.startQuiz}>Import and start</button>
+          <p className="under-text" style={{fontSize: 20}}>Copy and import this quiz code to play your quiz</p>
+          <button className="selection-button" onClick={this.startQuiz}>Import and start</button>
         </div>
       </div>
       </>
@@ -215,16 +215,19 @@ class QuizImport extends React.Component{
       return(<Quiz quiz={this.parseImport()}/>)
 
     return(
-      <div className="question-box">
-        <h1>Enter a quiz code</h1>
-        
-        <textarea
-              value={this.state.code}
-              onChange={e => this.onChange(e.target.value)}
-        />
-        
-        <br/>
-        <button onClick={this.startQuiz}>Import and start</button>
+      <div className="background-box">
+        <div className="question-box">
+          <h1>Enter a quiz code</h1>
+          
+          <textarea
+                value={this.state.code}
+                onChange={e => this.onChange(e.target.value)}
+          />
+          
+          <br/>
+          <br/>
+          <button className="selection-button" onClick={this.startQuiz}>Import and start</button>
+        </div>
       </div>
     )
   }
@@ -259,9 +262,11 @@ class Quiz extends React.Component {
   render(){
     if(this.state.current == this.state.questions.length){
       return(
-        <div className="question-box">
-          <h1>The end</h1>
-          <h1>You scored {this.state.correct} out of {this.state.questions.length}</h1>
+        <div className="background-box">
+          <div className="question-box">
+            <h1>The end</h1>
+            <h1>You scored {this.state.correct} out of {this.state.questions.length}</h1>
+          </div>
         </div>
       )
     }
@@ -312,12 +317,14 @@ class QuestionBox extends React.Component{
 
   render(){
     return(
-      <div className="question-box">
-        <p className="question-text">{this.props.data[0]}</p>
-        {this.AnswerButton(this.props.data[2], 1)}
-        {this.AnswerButton(this.props.data[3], 2)}
-        {this.AnswerButton(this.props.data[4], 3)}
-        {this.AnswerButton(this.props.data[5], 4)}
+      <div className="background-box">
+        <div className="question-box">
+          <p className="title-text">{this.props.data[0]}</p>
+          {this.AnswerButton(this.props.data[2], 1)}
+          {this.AnswerButton(this.props.data[3], 2)}
+          {this.AnswerButton(this.props.data[4], 3)}
+          {this.AnswerButton(this.props.data[5], 4)}
+        </div>
       </div>
     )
   }

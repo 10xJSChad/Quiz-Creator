@@ -68,6 +68,8 @@ class QuizCreator extends React.Component{
 
   AnswerButton(answer, val){
     var style = {}
+    if(this.state.question[val+1] == "") return;
+
     if(val == this.state.question[1])
       style = {backgroundColor: "greenyellow"}
 
@@ -195,7 +197,6 @@ class QuizImport extends React.Component{
     questions.forEach(question => {
       let questionSplit = question.split("⎚");
       questionSplit.forEach(element => {
-        if(element != "")
           current.push(element)
       });
 
@@ -299,6 +300,7 @@ class QuestionBox extends React.Component{
   }
 
   AnswerButton(answer, val){
+    if(answer == "") return
     let buttonClass = "question-button";
 
     if(this.props.data[1] == val && this.state.guess != 0){

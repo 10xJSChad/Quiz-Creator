@@ -18,7 +18,6 @@ class App extends React.Component{
   }
 
   render(){
-    //TODO: Convert to switch
     if(this.state.screen == 1) return(<QuizCreator/>)
     if(this.state.screen == 2) return(<QuizImport/>)
 
@@ -249,6 +248,7 @@ class Quiz extends React.Component {
     this.state.questions = this.props.quiz;
     this.checkAndIncrement = this.checkAndIncrement.bind(this);
     this.returnToIndex = this.returnToIndex.bind(this)
+    this.playAgain = this.playAgain.bind(this)
   }
 
   checkAndIncrement(answer){
@@ -269,6 +269,13 @@ class Quiz extends React.Component {
     })
   }
 
+  playAgain(){
+    this.setState({
+      current: 0,
+      correct: 0,
+    })
+  }
+
   render(){
     if(this.state.goToIndex != 0)
       return(<App screen={0}/>)
@@ -280,6 +287,7 @@ class Quiz extends React.Component {
             <h1>The end</h1>
             <h1>You scored {this.state.correct} out of {this.state.questions.length}</h1>
             <button className="selection-button" onClick={this.returnToIndex}>Back</button>
+            <button className="selection-button" onClick={this.playAgain}>Play Again</button>
           </div>
         </div>
       )
